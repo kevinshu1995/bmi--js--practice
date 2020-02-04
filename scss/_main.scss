@@ -1,0 +1,241 @@
+.wrap{
+  width: 100px;
+  min-width: 700px;
+  padding: 75px 0;
+  // overflow: hidden;
+}
+
+//header
+.header{
+  min-height: 30vh;
+  background-color: $color-second;
+  display: flex;
+  align-items: center;
+  .wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.header__content{
+  position: relative;
+  bottom: 10px;
+  min-width: 250px;
+  padding-left: 1em;
+  .header__content__title
+  ,input{
+    width: 100%;
+  }
+  .header__content__title{
+    margin:.5em 0;
+    @include font-size(18);
+    color: $color-pri;
+  }
+  input{
+    // height: 30px;
+    outline: none;
+    margin-bottom: 0px;
+    padding: .2em 16px;
+    @include font-size(24);
+    color: $color-white;
+    border: 2px solid $color-pri;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.18);
+  }
+  input::placeholder{
+    color: rgba(255,255,255,0.50);
+  }
+}
+
+.resultbtnWrap{
+  position: relative;
+  .display--none{
+    display:none;
+  }
+}
+.header__result--basic{
+  margin:0 5px;
+  @include circleEl(120px);
+  outline: none;
+  text-align: center;
+}
+.header__resultBtn{
+  @include font-size(24);
+  color: $color-second;
+  font-weight: 700;
+  line-height: 120px;
+  background-color: $color-pri;
+  cursor: pointer;
+  &:hover{
+    box-shadow: 0 1px 6px 3px rgba(255,196,50,0.64);
+  }
+  &:active{
+    background: #DEA821;
+  }
+}
+.header__showResult{
+  margin:0 5px;
+  @include circleEl(120px);
+  border: 6px solid transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  p{
+    @include font-size(32);
+    margin: .4em 0 .2em;
+  }
+  h2{
+    @include font-size(14);
+  }
+  img{
+    position: absolute;
+    right: -5px;
+    bottom: 0px;
+    padding: 5px 8px;
+    border-radius: 50%;
+    border: 3px solid $color-second;
+    cursor: pointer;
+  }
+  .result__status{
+    position: absolute;
+    right: -150px;
+    bottom: 40px;
+    text-align: left;
+    @include font-size(32);
+  }
+}
+// status
+.header__showResult--nice{
+  color: #86D73F;
+  border-color: #86D73F;
+  img{
+    background-color: #86D73F;
+  }
+}
+.header__showResult--light{
+  color: #31BAF9;
+  border-color: #31BAF9;
+  img{
+    background-color: #31BAF9;
+  }
+}
+.header__showResult--heavy{
+  color: #FF982D;
+  border-color: #FF982D;
+  img{
+    background-color: #FF982D;
+  }
+}
+.header__showResult--xheavy{
+  color: #FF6C03;
+  border-color: #FF6C03;
+  img{
+    background-color: #FF6C03;
+  }
+}
+.header__showResult--xxheavy{
+  color: #FF3C03;
+  border-color: #FF3C03;
+  img{
+    background-color: #FF3C03;
+  }
+}
+.header__showResult--xxxheavy{
+  color: #FF1200;
+  border-color: #FF1200;
+  img{
+    background-color: #FF1200;
+  }
+}
+
+//main
+.main{
+  min-height: 560px;
+  background-color: $color-bg;
+  color: $color-second;
+  .wrap{
+    padding: 20px 0 75px;
+  }
+  .main__title{
+    margin: 28px 0;
+    @include font-size(24);
+    text-align: center;
+  }
+  .main__delete{
+    margin-top: 18px;
+    text-align: center;
+  }
+  .main__delete__txt{
+    text-align: center;
+    width: 50px;
+  }
+}
+.main__list{
+  overflow: hidden;
+  width: 100%;
+  @include font-size(20);
+  li{
+    height: 62px;
+    width: 100%;
+    margin: 8px 0;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-white;
+    h3,.list__time{
+      padding: 0 12px;
+    }
+  }
+  h4,.list__time{
+    @include font-size(12);
+  }
+  h4,p{
+    line-height: 20px;
+  }
+  p{
+    margin: 0 7px;
+  }
+  .list__wrap h4,
+  .list__wrap p{
+    float: left;
+  }
+  .defaultList{
+    background-color: lighten($color-second,60%);
+    color: #aaa;
+  }
+}
+
+//main list status color
+.main__list{
+  .js--status_nice{
+    border-left: 7px solid #86D73F;
+  }
+  .js--status_light{
+    border-left: 7px solid #31BAF9;
+  }
+  .js--status_heavy{
+    border-left: 7px solid #FF982D;
+  }
+  .js--status_xheavy{
+    border-left: 7px solid #FF6C03;
+  }
+  .js--status_xxheavy{
+    border-left: 7px solid #FF3C03;
+  }
+  .js--status_xxxheavy{
+    border-left: 7px solid #FF1200;
+  }
+}
+
+//footer
+.footer{
+  text-align: center;
+  padding: 18px 0;
+  background-color: darken($color-pri,10%);
+  img{
+    width: 55px;
+    height: auto;
+  }
+}

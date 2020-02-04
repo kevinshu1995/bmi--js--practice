@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="dist/style/all.min.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="wrap">
+      <div class="header__img">
+        <img src="images/BMICLogo.png" alt="">
+      </div>
+      <div class="header__content">
+        <label for="">
+          <h2 class="header__content__title">身高 cm</h2>
+          <input type="text" name="" id="js--height" placeholder="請輸入身高">
+        </label>
+        <label for="">
+          <h2 class="header__content__title">體重 kg</h2>
+          <input type="text" name="" id="js--weight" placeholder="請輸入體重">
+        </label>
+      </div>
+      <div class="resultbtnWrap">
+        <div class="header__result__inputwrap">
+          <input type="button" class="header__result--basic  header__resultBtn" value="看結果" id="resultBtn">
+        </div>
+        <div class="header__result__showWrap  header__result--basic  display--none">
+          <div class="header__showResult  header__showResult--nice">
+            <p>20.90</p>
+            <h2>BMI</h2>
+            <img src="images/icons_loop.png" alt="loopIcon" id="reset">
+            <h3 class="result__status">狀態</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="wrap">
+      <h2 class="main__title">BMI 紀錄</h2>
+      <ul class="main__list">
+        <li class="js--status_nice defaultList" id="js--defaultList">
+          <h3>理想</h3>
+          <div class="list__wrap">
+            <h4>BMI</h4>
+            <p>20.90</p>
+          </div>
+          <div class="list__wrap">
+            <h4>weight</h4>
+            <p>20.90</p>
+          </div>
+          <div class="list__wrap">
+            <h4>height</h4>
+            <p>20.90</p>
+          </div>
+          <div class="list__wrap">
+            <h5>06-19-2017</h5>
+          </div>
+        </li>
+      </ul>
+      <h3 class="main__delete">刪除第 <input type="text" id="listDelete" class="main__delete__txt"> 筆資料</h3>
+    </div>
+  </div>
+  <div class="footer">
+    <h2>
+      <img src="images/BMICLogo.png" alt="">
+    </h2>
+  </div>
+  <script src="js/all.js"></script>
+</body>
+
+</html>

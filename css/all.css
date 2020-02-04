@@ -1,0 +1,487 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+input {
+  border: none;
+  font-family: "微軟正黑體", sans-serif;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 624px;
+  margin: auto;
+  font-family: "微軟正黑體", sans-serif;
+}
+
+.wrap {
+  width: 100px;
+  min-width: 700px;
+  padding: 75px 0;
+}
+
+.header {
+  min-height: 30vh;
+  background-color: #424242;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__content {
+  position: relative;
+  bottom: 10px;
+  min-width: 250px;
+  padding-left: 1em;
+}
+
+.header__content .header__content__title
+, .header__content input {
+  width: 100%;
+}
+
+.header__content .header__content__title {
+  margin: .5em 0;
+  font-size: 18px;
+  font-size: 1.125rem;
+  color: #FFD366;
+}
+
+.header__content input {
+  outline: none;
+  margin-bottom: 0px;
+  padding: .2em 16px;
+  font-size: 24px;
+  font-size: 1.5rem;
+  color: #ffffff;
+  border: 2px solid #FFD366;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.header__content input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.header__content input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.header__content input::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.header__content input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.resultbtnWrap {
+  position: relative;
+}
+
+.resultbtnWrap .display--none {
+  display: none;
+}
+
+.header__result--basic {
+  margin: 0 5px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  outline: none;
+  text-align: center;
+}
+
+.header__resultBtn {
+  font-size: 24px;
+  font-size: 1.5rem;
+  color: #424242;
+  font-weight: 700;
+  line-height: 120px;
+  background-color: #FFD366;
+  cursor: pointer;
+}
+
+.header__resultBtn:hover {
+  -webkit-box-shadow: 0 1px 6px 3px rgba(255, 196, 50, 0.64);
+          box-shadow: 0 1px 6px 3px rgba(255, 196, 50, 0.64);
+}
+
+.header__resultBtn:active {
+  background: #DEA821;
+}
+
+.header__showResult {
+  margin: 0 5px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 6px solid transparent;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header__showResult p {
+  font-size: 32px;
+  font-size: 2rem;
+  margin: .4em 0 .2em;
+}
+
+.header__showResult h2 {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+.header__showResult img {
+  position: absolute;
+  right: -5px;
+  bottom: 0px;
+  padding: 5px 8px;
+  border-radius: 50%;
+  border: 3px solid #424242;
+  cursor: pointer;
+}
+
+.header__showResult .result__status {
+  position: absolute;
+  right: -150px;
+  bottom: 40px;
+  text-align: left;
+  font-size: 32px;
+  font-size: 2rem;
+}
+
+.header__showResult--nice {
+  color: #86D73F;
+  border-color: #86D73F;
+}
+
+.header__showResult--nice img {
+  background-color: #86D73F;
+}
+
+.header__showResult--light {
+  color: #31BAF9;
+  border-color: #31BAF9;
+}
+
+.header__showResult--light img {
+  background-color: #31BAF9;
+}
+
+.header__showResult--heavy {
+  color: #FF982D;
+  border-color: #FF982D;
+}
+
+.header__showResult--heavy img {
+  background-color: #FF982D;
+}
+
+.header__showResult--xheavy {
+  color: #FF6C03;
+  border-color: #FF6C03;
+}
+
+.header__showResult--xheavy img {
+  background-color: #FF6C03;
+}
+
+.header__showResult--xxheavy {
+  color: #FF3C03;
+  border-color: #FF3C03;
+}
+
+.header__showResult--xxheavy img {
+  background-color: #FF3C03;
+}
+
+.header__showResult--xxxheavy {
+  color: #FF1200;
+  border-color: #FF1200;
+}
+
+.header__showResult--xxxheavy img {
+  background-color: #FF1200;
+}
+
+.main {
+  min-height: 560px;
+  background-color: #f2f2f2;
+  color: #424242;
+}
+
+.main .wrap {
+  padding: 20px 0 75px;
+}
+
+.main .main__title {
+  margin: 28px 0;
+  font-size: 24px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.main .main__delete {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.main .main__delete__txt {
+  text-align: center;
+  width: 50px;
+}
+
+.main__list {
+  overflow: hidden;
+  width: 100%;
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+.main__list li {
+  height: 62px;
+  width: 100%;
+  margin: 8px 0;
+  float: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffffff;
+}
+
+.main__list li h3, .main__list li .list__time {
+  padding: 0 12px;
+}
+
+.main__list h4, .main__list .list__time {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+
+.main__list h4, .main__list p {
+  line-height: 20px;
+}
+
+.main__list p {
+  margin: 0 7px;
+}
+
+.main__list .list__wrap h4,
+.main__list .list__wrap p {
+  float: left;
+}
+
+.main__list .defaultList {
+  background-color: #dbdbdb;
+  color: #aaa;
+}
+
+.main__list .js--status_nice {
+  border-left: 7px solid #86D73F;
+}
+
+.main__list .js--status_light {
+  border-left: 7px solid #31BAF9;
+}
+
+.main__list .js--status_heavy {
+  border-left: 7px solid #FF982D;
+}
+
+.main__list .js--status_xheavy {
+  border-left: 7px solid #FF6C03;
+}
+
+.main__list .js--status_xxheavy {
+  border-left: 7px solid #FF3C03;
+}
+
+.main__list .js--status_xxxheavy {
+  border-left: 7px solid #FF1200;
+}
+
+.footer {
+  text-align: center;
+  padding: 18px 0;
+  background-color: #ffc433;
+}
+
+.footer img {
+  width: 55px;
+  height: auto;
+}
+/*# sourceMappingURL=all.css.map */
