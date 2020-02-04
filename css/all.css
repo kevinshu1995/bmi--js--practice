@@ -423,11 +423,11 @@ input {
   background-color: #ffffff;
 }
 
-.main__list li h3, .main__list li .list__time {
+.main__list li h3, .main__list li h5 {
   padding: 0 12px;
 }
 
-.main__list h4, .main__list .list__time {
+.main__list h4, .main__list h5 {
   font-size: 12px;
   font-size: 0.75rem;
 }

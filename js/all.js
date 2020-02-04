@@ -13,9 +13,7 @@ var btnstatus = '';
 
 //監聽
 updateList();
-
 elValresult.addEventListener('click', getResult);
-
 elValHeight.addEventListener('keydown', function (e) {
   if (e.keyCode == 13) {
     getResult();
@@ -28,21 +26,22 @@ elValWeight.addEventListener('keydown', function (e) {
 });
 elDelete.addEventListener('keydown', deleteList);
 
-//timeSet
-var time = new Date();
-var tYear = time.getFullYear().toString();
-var tMonth = (time.getMonth() + 1) > 9 ? (time.getMonth() + 1).toString() : '0' + (time.getMonth() + 1);
-var tDate = (time.getDate()) > 9 ? (time.getDate()).toString() : '0' + (time.getDate());
-var curentTime = tYear + '-' + tMonth + '-' + tDate;
 
 function getResult() {
-  var heightInCm = elValHeight.value;
-  var heightValInM = heightInCm * heightInCm * 0.0001;
-  var weightVal = elValWeight.value;
-  var height = (Math.round(heightInCm * 100) / 100).toFixed(2);
-  var weight = (Math.round(weightVal * 100) / 100).toFixed(2);
-  var result = (Math.round(weightVal / heightValInM * 100) / 100).toFixed(2);
-  var data = {
+  //timeSet
+  let time = new Date();
+  let tYear = time.getFullYear().toString();
+  let tMonth = (time.getMonth() + 1) > 9 ? (time.getMonth() + 1).toString() : '0' + (time.getMonth() + 1);
+  let tDate = (time.getDate()) > 9 ? (time.getDate()).toString() : '0' + (time.getDate());
+  let curentTime = tYear + '-' + tMonth + '-' + tDate;
+
+  let heightInCm = elValHeight.value;
+  let heightValInM = heightInCm * heightInCm * 0.0001;
+  let weightVal = elValWeight.value;
+  let height = (Math.round(heightInCm * 100) / 100).toFixed(2);
+  let weight = (Math.round(weightVal * 100) / 100).toFixed(2);
+  let result = (Math.round(weightVal / heightValInM * 100) / 100).toFixed(2);
+  let data = {
     'bmi': result,
     'weight': weight,
     'heightInCm': height,
@@ -58,7 +57,7 @@ function getResult() {
 
     ///
     headerShowResult();
-    var elresetBtn = document.getElementById('reset');
+    let elresetBtn = document.getElementById('reset');
     elresetBtn.addEventListener('click', headerReset);
   } else {
     alert('身高與體重不可為空')
@@ -74,9 +73,26 @@ function updateList() {
     elListDefault.style.display = "flex";
   } else {
     elListDefault.style.display = "none";
-    listStr = '';
-    for (var i = 0; i < bmi.length; i++) {
-      listStr += '<li class="' + bmiStatusColorAry[i] + '"><h3>' + bmiStatusTxtAry[i] + '</h3><div class="list__wrap"><h4>BMI</h4><p>' + bmi[i].bmi + '</p></div><div class="list__wrap"><h4>weight</h4><p>' + bmi[i].weight + '</p></div><div class="list__wrap"><h4>height</h4><p>' + bmi[i].heightInCm + '</p></div><div class="list__wrap"><h5 class="list__time">' + bmi[i].date + '</h5></div></li>'
+    let listStr = '';
+    for (let i = 0; i < bmi.length; i++) {
+      listStr += `<li class="${bmiStatusColorAry[i]}">
+                      <h3>${bmiStatusTxtAry[i]}</h3>
+                      <div class="list__wrap">
+                        <h4>BMI</h4>
+                        <p>${bmi[i].bmi}</p>
+                      </div>
+                      <div class="list__wrap">
+                        <h4>weight</h4>
+                        <p>${bmi[i].weight}</p>
+                      </div>
+                      <div class="list__wrap">
+                        <h4>height</h4>
+                        <p>${bmi[i].heightInCm}</p>
+                      </div>
+                      <div class="list__wrap">
+                        <h5 class="list__time">${bmi[i].date}</h5>
+                      </div>
+                  </li>`
     }
     document.querySelector('.main__list').innerHTML = listStr;
   };
@@ -84,7 +100,7 @@ function updateList() {
 
 var statusTxt = '';
 function bmiStatus() {
-  for (var i = 0; i < bmi.length; i++) {
+  for (let i = 0; i < bmi.length; i++) {
     var statusColor = '';
     var bmiVal = Number(bmi[i].bmi);
     if (bmiVal < 18.5) {
@@ -118,27 +134,47 @@ function bmiStatus() {
 }
 
 function deleteList(e) {
-  var num = e.target.value;
+  let num = e.target.value;
   if (num != '' && e.keyCode == 13 && bmi != [] && num != 0) {
     getData();
     bmi.splice(num - 1, 1);
     bmiStatusTxtAry.splice(num - 1, 1);
     bmiStatusColorAry.splice(num - 1, 1);
     saveData();
-    updateList();
   }
+  if (bmi.length == 0) {
+    let listStr = `<li class="js--status_nice defaultList" id="js--defaultList">
+    <h3>理想</h3>
+    <div class="list__wrap">
+      <h4>BMI</h4>
+      <p>20.90</p>
+    </div>
+    <div class="list__wrap">
+      <h4>weight</h4>
+      <p>20.90</p>
+    </div>
+    <div class="list__wrap">
+      <h4>height</h4>
+      <p>20.90</p>
+    </div>
+    <div class="list__wrap">
+      <h5>06-19-2017</h5>
+    </div>
+    </li>`
+    document.querySelector('.main__list').innerHTML = listStr;
+  }
+  updateList();
   elDelete.value = '';
 }
 
 function saveData() {
-  var bmiString = JSON.stringify(bmi)
+  let bmiString = JSON.stringify(bmi)
   localStorage.setItem('bmiData', bmiString);
 }
 
 function getData() {
-  var getData = localStorage.getItem('bmiData');
-  var getDataAry = JSON.parse(getData);
-  if (getDataAry == null) { return };
+  let getData = localStorage.getItem('bmiData');
+  let getDataAry = JSON.parse(getData) || [];
   bmi = getDataAry;
 }
 
@@ -154,6 +190,11 @@ function headerReset() {
 
 function headerShowResult() {
   headerBtnToggle();
-  str = '<div class="header__showResult  ' + btnstatus + '"><p>' + bmi[bmi.length - 1].bmi + '</p><h2>BMI</h2><img src="images/icons_loop.png" alt="loopIcon" id="reset"><h3 class="result__status">' + statusTxt + '</h3></div>';
+  str = `<div class="header__showResult  ${btnstatus}">
+            <p>${bmi[bmi.length - 1].bmi}</p>
+            <h2>BMI</h2>
+            <img src="images/icons_loop.png" alt="loopIcon" id="reset">
+            <h3 class="result__status">${statusTxt}</h3>
+         </div>`;
   elreset.innerHTML = str;
 }

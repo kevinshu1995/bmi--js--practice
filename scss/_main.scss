@@ -184,11 +184,11 @@
     justify-content: space-between;
     align-items: center;
     background-color: $color-white;
-    h3,.list__time{
+    h3,h5{
       padding: 0 12px;
     }
   }
-  h4,.list__time{
+  h4,h5{
     @include font-size(12);
   }
   h4,p{
