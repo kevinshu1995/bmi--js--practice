@@ -1,31 +1,33 @@
-var elValHeight = document.getElementById('js--height');
-var elValWeight = document.getElementById('js--weight');
-var elValresult = document.getElementById('resultBtn');
-var elDelete = document.getElementById('listDelete');
-var elListDefault = document.getElementById('js--defaultList');
-var elreset = document.querySelector('.header__result__showWrap');
-var elresultWrap = document.querySelector('.header__result__inputwrap');
+let elValHeight = document.getElementById('js--height');
+let elValWeight = document.getElementById('js--weight');
+let elValresult = document.getElementById('resultBtn');
+let elList = document.querySelector('.main__list');
+let elListDefault = document.getElementById('js--defaultList');
+let elreset = document.querySelector('.header__result__showWrap');
+let elresultWrap = document.querySelector('.header__result__inputwrap');
+let eldeleteAll = document.querySelector('.main__delete');
 
-var bmi = [];
-var bmiStatusTxtAry = [];
-var bmiStatusColorAry = [];
-var btnstatus = '';
 
+let bmi = [];
+let bmiStatusTxtAry = [];
+let bmiStatusColorAry = [];
+let btnstatus = '';
+let statusTxt = '';
 //監聽
 updateList();
 elValresult.addEventListener('click', getResult);
 elValHeight.addEventListener('keydown', function (e) {
-  if (e.keyCode == 13) {
+  if (e.keyCode === 13) {
     getResult();
   }
 });
 elValWeight.addEventListener('keydown', function (e) {
-  if (e.keyCode == 13) {
+  if (e.keyCode === 13) {
     getResult();
   }
 });
-elDelete.addEventListener('keydown', deleteList);
-
+elList.addEventListener('click', deleteList);
+eldeleteAll.addEventListener('click', deleteAllList);
 
 function getResult() {
   //timeSet
@@ -52,9 +54,8 @@ function getResult() {
     bmi.push(data);
     saveData();
     updateList();
-    elValHeight.value = '';
-    elValWeight.value = '';
-
+    let headerInput = document.querySelector('.header__content');
+    headerInput.reset();
     ///
     headerShowResult();
     let elresetBtn = document.getElementById('reset');
@@ -69,13 +70,13 @@ function updateList() {
   bmiStatusTxtAry = [];
   bmiStatusColorAry = [];
   bmiStatus();
-  if (bmi.length == 0) {
+  if (bmi.length === 0) {
     elListDefault.style.display = "flex";
   } else {
     elListDefault.style.display = "none";
     let listStr = '';
     for (let i = 0; i < bmi.length; i++) {
-      listStr += `<li class="${bmiStatusColorAry[i]}">
+      listStr += `<li class="${bmiStatusColorAry[i]}" data-num="${i}">
                       <h3>${bmiStatusTxtAry[i]}</h3>
                       <div class="list__wrap">
                         <h4>BMI</h4>
@@ -92,17 +93,20 @@ function updateList() {
                       <div class="list__wrap">
                         <h5 class="list__time">${bmi[i].date}</h5>
                       </div>
+                      <div class="list__wrap">
+                        <div class="deletelist">X</div>
+                      </div>
                   </li>`
     }
     document.querySelector('.main__list').innerHTML = listStr;
   };
 }
 
-var statusTxt = '';
+
 function bmiStatus() {
   for (let i = 0; i < bmi.length; i++) {
-    var statusColor = '';
-    var bmiVal = Number(bmi[i].bmi);
+    let statusColor = '';
+    let bmiVal = Number(bmi[i].bmi);
     if (bmiVal < 18.5) {
       statusTxt = '過輕　　';
       statusColor = 'js--status_light';
@@ -134,15 +138,32 @@ function bmiStatus() {
 }
 
 function deleteList(e) {
-  let num = e.target.value;
-  if (num != '' && e.keyCode == 13 && bmi != [] && num != 0) {
+  let deleteBtn = e.target.className;
+  let listNum = e.srcElement.parentElement.parentElement.dataset.num;
+  if (deleteBtn === 'deletelist') {
     getData();
-    bmi.splice(num - 1, 1);
-    bmiStatusTxtAry.splice(num - 1, 1);
-    bmiStatusColorAry.splice(num - 1, 1);
+    bmi.splice(listNum, 1);
+    bmiStatusTxtAry.splice(listNum, 1);
+    bmiStatusColorAry.splice(listNum, 1);
     saveData();
   }
-  if (bmi.length == 0) {
+  returnDefault(bmi)
+}
+
+function deleteAllList() {
+  let confirmAns = confirm('確定要刪除全部資料嗎?');
+  if (confirmAns) {
+    getData();
+    bmi = [];
+    bmiStatusTxtAry = [];
+    bmiStatusColorAry = [];
+    saveData();
+  }
+  returnDefault(bmi)
+}
+
+function returnDefault(bmi) {
+  if (bmi.length === 0) {
     let listStr = `<li class="js--status_nice defaultList" id="js--defaultList">
     <h3>理想</h3>
     <div class="list__wrap">
@@ -164,7 +185,6 @@ function deleteList(e) {
     document.querySelector('.main__list').innerHTML = listStr;
   }
   updateList();
-  elDelete.value = '';
 }
 
 function saveData() {

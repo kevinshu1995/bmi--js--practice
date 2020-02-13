@@ -390,13 +390,11 @@ input {
 }
 
 .main .main__delete {
-  margin-top: 18px;
+  display: block;
+  margin: 18px auto 0;
+  padding: .3em 1em;
   text-align: center;
-}
-
-.main .main__delete__txt {
-  text-align: center;
-  width: 50px;
+  cursor: pointer;
 }
 
 .main__list {
@@ -443,6 +441,10 @@ input {
 .main__list .list__wrap h4,
 .main__list .list__wrap p {
   float: left;
+}
+
+.main__list .deletelist {
+  padding: 0 1em;
 }
 
 .main__list .defaultList {

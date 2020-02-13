@@ -163,12 +163,11 @@
     text-align: center;
   }
   .main__delete{
-    margin-top: 18px;
+    display: block;
+    margin: 18px auto 0;
+    padding: .3em 1em;
     text-align: center;
-  }
-  .main__delete__txt{
-    text-align: center;
-    width: 50px;
+    cursor: pointer;
   }
 }
 .main__list{
@@ -200,6 +199,9 @@
   .list__wrap h4,
   .list__wrap p{
     float: left;
+  }
+  .deletelist{
+    padding: 0 1em;
   }
   .defaultList{
     background-color: lighten($color-second,60%);
